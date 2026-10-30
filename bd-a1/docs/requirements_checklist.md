@@ -24,7 +24,7 @@ Notebook section numbers refer to `notebook/analysis.ipynb`. Figures are in `out
 | 3.3 Bind mount, outputs persist after container removal | 1 | `-v "$(pwd)/output:/home/jovyan/bd-a1/output"`, explained in README §8. `docs/validation/docker_validation_log.txt` shows the files still on the host after `docker rm` | ✅ |
 | 3.4 `docker images`, `ps`, `ps -a`, `logs`, `inspect` | 0.5 | README §11 (table + lifecycle diagram); real output in `docs/validation/docker_validation_log.txt` | ✅ (screenshots 👤) |
 | 3.4 Screenshots of image + running container | | List in `screenshots/README.md` | 👤 |
-| 3.5 Tag with Docker Hub username, push, document repo:tag | 0.5 | README §12, `YOUR_DOCKERHUB_USERNAME/bd-a1:v1` | 👤 login + push |
+| 3.5 Tag with Docker Hub username, push, document repo:tag | 0.5 | README §12, `ayhamayman/bd-a1:v1` | 👤 login + push |
 | 3.5 Teammate pulls and runs | | README §13 | 👤 |
 | Image layers explained | (discussion) | README §5 "Docker image layers" | ✅ |
 | Container lifecycle explained | (discussion) | README §11 "Container lifecycle" | ✅ |

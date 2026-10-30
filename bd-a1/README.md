@@ -6,7 +6,7 @@
 |---|---|
 | **Team members** | _Name 1 (ID)_, _Name 2 (ID)_, _Name 3 (ID)_, _Name 4 (ID)_ |
 | **Dataset** | UCI SMS Spam Collection (approved option 1) |
-| **Docker Hub image** | `YOUR_DOCKERHUB_USERNAME/bd-a1:v1` (also tagged `latest`) |
+| **Docker Hub image** | `ayhamayman/bd-a1:v1` (also tagged `latest`) |
 | **GitHub repository** | `https://github.com/YOUR_GITHUB_USERNAME/bd-a1` |
 
 ---
@@ -305,12 +305,12 @@ Dockerfile ───────────────► IMAGE ────�
 
 ## 12. Docker Hub publishing
 
-Replace `YOUR_DOCKERHUB_USERNAME` with your Docker Hub username. The public repository is `YOUR_DOCKERHUB_USERNAME/bd-a1`, with tags `v1` and `latest`.
+Replace `ayhamayman` with your Docker Hub username. The public repository is `ayhamayman/bd-a1`, with tags `v1` and `latest`.
 
 1. Log in. Use an access token from *Docker Hub → Account settings → Personal access tokens* as the password.
 
    ```bash
-   docker login -u YOUR_DOCKERHUB_USERNAME
+   docker login -u ayhamayman
    ```
 
 2. Build, if you have not already.
@@ -322,24 +322,24 @@ Replace `YOUR_DOCKERHUB_USERNAME` with your Docker Hub username. The public repo
 3. Tag the image with the repository name.
 
    ```bash
-   docker tag bd-a1:latest YOUR_DOCKERHUB_USERNAME/bd-a1:v1
+   docker tag bd-a1:latest ayhamayman/bd-a1:v1
    ```
 
    ```bash
-   docker tag bd-a1:latest YOUR_DOCKERHUB_USERNAME/bd-a1:latest
+   docker tag bd-a1:latest ayhamayman/bd-a1:latest
    ```
 
 4. Push both tags.
 
    ```bash
-   docker push YOUR_DOCKERHUB_USERNAME/bd-a1:v1
+   docker push ayhamayman/bd-a1:v1
    ```
 
    ```bash
-   docker push YOUR_DOCKERHUB_USERNAME/bd-a1:latest
+   docker push ayhamayman/bd-a1:latest
    ```
 
-5. Verify the push at `https://hub.docker.com/r/YOUR_DOCKERHUB_USERNAME/bd-a1`.
+5. Verify the push at `https://hub.docker.com/r/ayhamayman/bd-a1`.
 
 The first push uploads all layers, including the base layers from quay.io, so it is about 1.5 GB compressed and can take a while. Later pushes upload only the layers that changed, usually just the small notebook/data layers.
 
@@ -350,7 +350,7 @@ On a **different machine**, which does not need this repository or the dataset:
 1. Pull the image.
 
    ```bash
-   docker pull YOUR_DOCKERHUB_USERNAME/bd-a1:v1
+   docker pull ayhamayman/bd-a1:v1
    ```
 
 2. Create a folder for the outputs.
@@ -362,7 +362,7 @@ On a **different machine**, which does not need this repository or the dataset:
 3. Run the image (on Windows PowerShell, replace `$(pwd)` with `${PWD}`).
 
    ```bash
-   docker run -d --name bd-a1-container -p 8888:8888 -v "$(pwd)/bd-a1-output:/home/jovyan/bd-a1/output" YOUR_DOCKERHUB_USERNAME/bd-a1:v1
+   docker run -d --name bd-a1-container -p 8888:8888 -v "$(pwd)/bd-a1-output:/home/jovyan/bd-a1/output" ayhamayman/bd-a1:v1
    ```
 
 4. Get the JupyterLab URL and token, open it in the browser, and run all cells.

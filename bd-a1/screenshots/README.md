@@ -15,7 +15,7 @@ Save the PNG files in this folder using the names below. Keep the full terminal 
 | 8 | `08_notebook_run_all.png` | The end of the notebook after **Kernel → Restart Kernel and Run All Cells**, showing *"All required outputs were generated successfully."* | browser |
 | 9 | `09_output_on_host.png` | The host file explorer or terminal showing `output/` with the CSV, the TXT files and `figures/` | `ls output output/figures` (PowerShell: `dir output`) |
 | 10 | `10_docker_ps_a.png` | The container in **Exited** state after `docker stop` | `docker stop bd-a1-container`, then `docker ps -a` |
-| 11 | `11_docker_push.png` | A successful push of `YOUR_DOCKERHUB_USERNAME/bd-a1:v1` | `docker push ...` (README §12) |
+| 11 | `11_docker_push.png` | A successful push of `ayhamayman/bd-a1:v1` | `docker push ...` (README §12) |
 | 12 | `12_dockerhub_page.png` | The repository page on hub.docker.com showing the tag | browser |
 | 13 | `13_teammate_pull_run.png` | **Another team member's machine**: `docker pull` + `docker run` + the notebook working | README §13 |
 | 14 | `14_github_repo.png` (bonus) | The GitHub repository page with the README rendered | browser |
