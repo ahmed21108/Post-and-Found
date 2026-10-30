@@ -1,0 +1,11 @@
+# Keep the build context small: only requirements.txt, data/ and notebook/ are needed.
+output/
+screenshots/
+docs/
+.git/
+.gitignore
+**/.ipynb_checkpoints/
+**/__pycache__/
+*.zip
+.venv/
+venv/

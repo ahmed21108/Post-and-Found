@@ -1,0 +1,64 @@
+CSCI461 Assignment 1 - K-Means Clustering Summary
+============================================================
+
+Representation : TF-IDF (english stop words removed, min_df=3, sublinear_tf)
+                 -> TruncatedSVD(100 components, 30.7% variance) -> L2 normalisation
+Algorithm      : KMeans(n_init=10, random_state=42)
+k selection    : k = 2..10 evaluated with inertia (elbow) and silhouette score;
+                 chosen k = highest silhouette with every cluster >= 1% of messages
+
+k-selection experiment
+      inertia  silhouette  smallest_cluster
+k                                          
+2   4678.1881      0.0337              1036
+3   4590.5501      0.0376               400
+4   4526.1392      0.0402               273
+5   4458.2709      0.0471               235
+6   4406.0844      0.0506               231
+7   4357.8213      0.0526               222
+8   4293.8445      0.0565               197
+9   4249.2719      0.0605               176
+10  4210.0295      0.0491               221
+
+Chosen k                 : 9
+Silhouette score (final) : 0.0605
+Inertia (final)          : 4249.27
+
+Cluster sizes and label composition
+label     ham  spam  spam %
+cluster                    
+0         283     0     0.0
+1         324     9     2.7
+2         172     4     2.3
+3         308     2     0.6
+4         195     4     2.0
+5         298     2     0.7
+6         236   567    70.6
+7        2319    56     2.4
+8         383     9     2.3
+
+Top terms and interpretation per cluster
+- Cluster 0 (n=283): almost purely ham (personal conversation); spam share 0.0% vs 12.6% overall; key terms: lor, wat, num, dun, wan, thk
+    top terms: lor, wat, num, dun, wan, thk, say, cos, dunno, ask, lar, liao
+- Cluster 1 (n=333): almost purely ham (personal conversation); spam share 2.7% vs 12.6% overall; key terms: im, num, home, going, gonna, want
+    top terms: im, num, home, going, gonna, want, just, sorry, really, ill, ready, week
+- Cluster 2 (n=176): almost purely ham (personal conversation); spam share 2.3% vs 12.6% overall; key terms: like, num, feel, dat, think, just
+    top terms: like, num, feel, dat, think, just, im, dont, sounds, ill, know, dun
+- Cluster 3 (n=310): almost purely ham (personal conversation); spam share 0.6% vs 12.6% overall; key terms: ok, come, num, time, ill, ur
+    top terms: ok, come, num, time, ill, ur, tomorrow, home, said, ask, want, going
+- Cluster 4 (n=199): almost purely ham (personal conversation); spam share 2.0% vs 12.6% overall; key terms: good, morning, day, hope, night, love
+    top terms: good, morning, day, hope, night, love, im, num, happy, sleep, time, evening
+- Cluster 5 (n=300): almost purely ham (personal conversation); spam share 0.7% vs 12.6% overall; key terms: dont, know, let, want, just, think
+    top terms: dont, know, let, want, just, think, need, num, worry, ill, sure, pls
+- Cluster 6 (n=803): spam-dominated (promotional / prize / call-to-action messages); spam share 70.6% vs 12.6% overall; key terms: num, phonenum, currency, free, txt, url
+    top terms: num, phonenum, currency, free, txt, url, ur, stop, mobile, claim, text, reply
+- Cluster 7 (n=2375): almost purely ham (personal conversation); spam share 2.4% vs 12.6% overall; key terms: ur, love, life, time, need, hey
+    top terms: ur, love, life, time, need, hey, today, think, day, did, going, great
+- Cluster 8 (n=392): almost purely ham (personal conversation); spam share 2.3% vs 12.6% overall; key terms: just, got, da, num, ive, sorry
+    top terms: just, got, da, num, ive, sorry, sent, money, want, send, yeah, yo
+
+Comparison with known labels
+Purity = 0.9377 (majority-class baseline 0.8737), ARI = 0.1146, homogeneity = 0.5418
+Cluster IDs are arbitrary integers assigned by K-Means; they do not correspond to the label codes
+(ham=0, spam=1). Clusters group messages by vocabulary/topic, not by the spam/ham definition.
+A low silhouette is typical for short, sparse texts: SMS messages overlap heavily in vocabulary.
