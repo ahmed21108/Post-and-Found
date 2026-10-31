@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Team members** | _Name 1 (ID)_, _Name 2 (ID)_, _Name 3 (ID)_, _Name 4 (ID)_ |
+| **Team members** | Ayham Ayman (231001290), Youssef Hisham (221000889), Mohamed Adel (231001166), Kareem Mahmoud (231001866) |
 | **Dataset** | UCI SMS Spam Collection (approved option 1) |
 | **Docker Hub image** | `ayhamayman/bd-a1:v1` |
 | **GitHub repository** | `https://github.com/ayham-codes/bd-a1` |
