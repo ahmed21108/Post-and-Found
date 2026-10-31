@@ -5,9 +5,34 @@
 | | |
 |---|---|
 | **Team members** | Ayham Ayman (231001290), Youssef Hisham (221000889), Mohamed Adel (231001166), Kareem Mahmoud (231001866) |
-| **Dataset** | UCI SMS Spam Collection (approved option 1) |
-| **Docker Hub image** | `ayhamayman/bd-a1:v1` |
-| **GitHub repository** | `https://github.com/ayham-codes/bd-a1` |
+| **Dataset** | [UCI SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection) (approved option 1) |
+| **Docker Hub image** | [`ayhamayman/bd-a1:v1`](https://hub.docker.com/r/ayhamayman/bd-a1) |
+| **GitHub repository** | [github.com/ayham-codes/bd-a1](https://github.com/ayham-codes/bd-a1) |
+
+### 🔗 Quick links
+
+| Item | Link |
+|---|---|
+| GitHub repository | <https://github.com/ayham-codes/bd-a1> |
+| Docker Hub image | <https://hub.docker.com/r/ayhamayman/bd-a1> |
+| Notebook | [notebook/analysis.ipynb](notebook/analysis.ipynb) |
+| Model metrics | [output/model_metrics.txt](output/model_metrics.txt) |
+| Cluster summary | [output/cluster_summary.txt](output/cluster_summary.txt) |
+| Cleaned data | [output/cleaned_data.csv](output/cleaned_data.csv) |
+| Figures | [output/figures/](output/figures/) |
+| Screenshots | [screenshots/](screenshots/) |
+| Dockerfile | [Dockerfile](Dockerfile) |
+| Dataset source (UCI) | <https://archive.ics.uci.edu/dataset/228/sms+spam+collection> |
+
+Pull and run the published image:
+
+```bash
+docker pull ayhamayman/bd-a1:v1
+```
+
+```bash
+docker run -d --name bd-a1-container -p 8888:8888 -v "$(pwd)/output:/home/jovyan/bd-a1/output" ayhamayman/bd-a1:v1
+```
 
 ---
 
