@@ -6,8 +6,8 @@
 |---|---|
 | **Team members** | _Name 1 (ID)_, _Name 2 (ID)_, _Name 3 (ID)_, _Name 4 (ID)_ |
 | **Dataset** | UCI SMS Spam Collection (approved option 1) |
-| **Docker Hub image** | `ayhamayman/bd-a1:v1` (also tagged `latest`) |
-| **GitHub repository** | `https://github.com/YOUR_GITHUB_USERNAME/bd-a1` |
+| **Docker Hub image** | `ayhamayman/bd-a1:v1` |
+| **GitHub repository** | `https://github.com/ayham-codes/bd-a1` |
 
 ---
 
@@ -302,7 +302,7 @@ Dockerfile ───────────────► IMAGE ────�
 
 ## 12. Docker Hub publishing
 
-Replace `ayhamayman` with your Docker Hub username. The public repository is `ayhamayman/bd-a1`, with tags `v1` and `latest`.
+The public repository is `ayhamayman/bd-a1`, published with tag `v1`.
 
 1. Log in. Use an access token from *Docker Hub → Account settings → Personal access tokens* as the password.
 
@@ -411,7 +411,7 @@ The dataset and notebook are **inside the image**, so the results appear in `bd-
 2. Create an **empty** repository named `bd-a1` on GitHub, then add it as the remote and push:
 
    ```bash
-   git remote add origin https://github.com/YOUR_GITHUB_USERNAME/bd-a1.git
+   git remote add origin https://github.com/ayham-codes/bd-a1.git
    ```
 
    ```bash
