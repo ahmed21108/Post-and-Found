@@ -1,0 +1,66 @@
+CSCI461 Assignment 1 - Supervised Text Classification Results
+Dataset: UCI SMS Spam Collection (after cleaning: 5171 messages)
+========================================================================
+
+Setup
+-----
+Target            : label_num (ham = 0, spam = 1; spam is the positive class)
+Input text        : cleaned_text
+Train/test split  : 80/20, stratified, random_state=42
+Train rows        : 4136 (spam 12.62%)
+Test rows         : 1035 (spam 12.66%)
+Features          : TF-IDF (ngram_range=(1,2), min_df=2, sublinear_tf=True)
+Leakage control   : TF-IDF fitted inside sklearn Pipeline on training data only
+
+5-fold stratified cross-validation on the training set (mean ± std)
+------------------------------------------------------------------
+                             cv_accuracy     cv_precision        cv_recall            cv_f1
+model                                                                                      
+Multinomial Naive Bayes  0.9879 ± 0.0050  0.9856 ± 0.0083  0.9175 ± 0.0389  0.9499 ± 0.0221
+Logistic Regression      0.9891 ± 0.0039  0.9636 ± 0.0216  0.9501 ± 0.0239  0.9565 ± 0.0159
+
+Held-out test-set results
+-------------------------
+                         accuracy  precision (spam)  recall (spam)  f1 (spam)  f1 (macro)
+model                                                                                    
+Multinomial Naive Bayes    0.9884            0.9685         0.9389     0.9535      0.9734
+Logistic Regression        0.9932            0.9844         0.9618     0.9730      0.9846
+
+=== Multinomial Naive Bayes ===
+              precision    recall  f1-score   support
+
+         ham     0.9912    0.9956    0.9934       904
+        spam     0.9685    0.9389    0.9535       131
+
+    accuracy                         0.9884      1035
+   macro avg     0.9798    0.9673    0.9734      1035
+weighted avg     0.9883    0.9884    0.9883      1035
+
+Confusion matrix (rows = true, columns = predicted) [ham, spam]:
+            pred_ham  pred_spam
+true_ham         900          4
+true_spam          8        123
+
+=== Logistic Regression ===
+              precision    recall  f1-score   support
+
+         ham     0.9945    0.9978    0.9961       904
+        spam     0.9844    0.9618    0.9730       131
+
+    accuracy                         0.9932      1035
+   macro avg     0.9894    0.9798    0.9846      1035
+weighted avg     0.9932    0.9932    0.9932      1035
+
+Confusion matrix (rows = true, columns = predicted) [ham, spam]:
+            pred_ham  pred_spam
+true_ham         902          2
+true_spam          5        126
+
+Best model by test F1 (spam): Logistic Regression
+
+Limitations
+-----------
+- Class imbalance (~12% spam): accuracy alone is misleading; precision/recall/F1 on spam are reported.
+- Bag-of-words TF-IDF ignores word order and context; obfuscated spam (e.g. 'fr33') can evade it.
+- The corpus is small and dated (UK/Singapore SMS, ~2000s-2012); performance on modern SMS may differ.
+- A single test split of ~1000 messages (~130 spam): one error changes spam recall by ~0.8 points.
